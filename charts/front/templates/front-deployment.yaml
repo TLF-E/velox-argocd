@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: velox-front
+spec:
+  selector:
+    matchLabels:
+      service: velox-front
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: velox-front
+    spec:
+      containers:
+        - image: {{ .Values.nodejsImageTag }}
+          name: nodejs

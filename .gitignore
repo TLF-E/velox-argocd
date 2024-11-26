@@ -1,0 +1,48 @@
+# Ignore files starting with 1.*
+1.*
+
+# Ignore log files
+*.log
+
+# Ignore temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore build directories
+dist/
+build/
+
+# Ignore environment variable files
+.env
+.env.local
+.env.*.local
+
+# Ignore coverage reports
+coverage/
+
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Ignore Helm chart lock files
+charts/*/Chart.lock
+
+# Ignore Kubernetes config files
+.kube/
+
+# Ignore ArgoCD config files
+argocd/.argocd-config
+
+# Ignore other non-project files
+tmp/
+local/

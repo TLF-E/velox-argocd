@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: velox-api
+spec:
+  selector:
+    matchLabels:
+      service: velox-api
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: velox-api
+    spec:
+      containers:
+        - image: {{ .Values.nginxImageTag }}
+          name: nginx
+        - image: {{ .Values.phpImageTag }}
+          name: php-fpm
