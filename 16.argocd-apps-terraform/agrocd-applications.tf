@@ -30,8 +30,7 @@ resource "kubernetes_manifest" "velox_api" {
       helm = {
         releaseName = "velox-api"
         values = [
-          "values-velox-stage-1.yaml",
-          "values-velox-prod-1.yaml"
+          "values-${var.namespace}-${var.stage}.yaml"
         ]
       }
     }

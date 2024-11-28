@@ -1,0 +1,10 @@
+resources:
+  - ../../base
+
+patches:
+  - path: patch_controller.yaml
+
+images:
+- name: controller
+  newName: amazon/aws-alb-ingress-controller
+  newTag: v2.4.1
