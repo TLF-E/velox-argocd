@@ -1,7 +1,0 @@
-namespace: velox
-nginxImageTag: nginx:latest
-phpImageTag: php:7.4-fpm
-certificateArn: arn:aws:acm:eu-west-1:310459952152:certificate/467309d0-0fd6-4bd7-ad3f-d89989f31eed
-loadBalancerName: velox-prod-alb
-apiHost: "velox-api.tlf.dev"
-securityGroups: "sg-07afadcf13f580ab0, sg-022a4eae9dde5e3bc, sg-0dc140f434583d7c8, sg-007fbe2d179a32928"

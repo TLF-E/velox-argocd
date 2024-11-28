@@ -1,0 +1,8 @@
+namespace: velox
+nginxImageTag: nginx:latest
+phpImageTag: php:7.4-fpm
+loadBalancerName: velox-prod-alb
+apiHost: "velox-api.tlf.dev"
+
+certificateArn: arn:aws:acm:eu-west-1:156041417813:certificate/a6e631a1-3073-4ebb-91d0-b973602876a1
+securityGroups: "sg-0818251ac039f7f53" #allow_cloudfront_origin_facing_sg
