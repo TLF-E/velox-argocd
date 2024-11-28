@@ -1,7 +1,9 @@
 namespace: velox
+
 nginxImageTag: nginx:latest
-phpImageTag: php:7.4-fpm
-loadBalancerName: velox-prod-alb
+phpImageTag: 156041417813.dkr.ecr.eu-west-1.amazonaws.com/velox-api:latest
+
+loadBalancerName: velox-prod-1-alb
 apiHost: "velox-api.tlf.dev"
 
 certificateArn: arn:aws:acm:eu-west-1:156041417813:certificate/a6e631a1-3073-4ebb-91d0-b973602876a1
