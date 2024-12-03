@@ -1,6 +1,8 @@
-stage: prod
+apiHost: velox-api.tlf.dev
+
+ddStage: prod
 projectName: velox-prod-1
-apiHost: "velox-api.tlf.dev"
+loadBalancerName: velox-prod-1-alb
 
 phpImageTag: 156041417813.dkr.ecr.eu-west-1.amazonaws.com/velox-api:latest
 nginxImageTag: nginx:latest
