@@ -1,0 +1,47 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: api-config
+data:
+  APP_ENV: '{{ .Values.config.APP_ENV }}'
+  CACHE_URL: '{{ .Values.config.CACHE_URL }}'
+  INFOBIP_HOST: '{{ .Values.config.INFOBIP_HOST }}'
+  INFOBIP_PREFIX: '{{ .Values.config.INFOBIP_PREFIX }}'
+  BACKOFFICE_HOST: '{{ .Values.config.BACKOFFICE_HOST }}'
+  BACKOFFICE_COMPANY_ID: '{{ .Values.config.BACKOFFICE_COMPANY_ID }}'
+  BACKOFFICE_CLIENT_ID: '{{ .Values.config.BACKOFFICE_CLIENT_ID }}'
+  BACKOFFICE_USER: '{{ .Values.config.BACKOFFICE_USER }}'
+  FRONTEND_URL: '{{ .Values.config.FRONTEND_URL }}'
+  BACKEND_URL: '{{ .Values.config.BACKEND_URL }}'
+  GOOGLE_BIG_QUERY_PROJECT_ID: '{{ .Values.config.GOOGLE_BIG_QUERY_PROJECT_ID }}'
+  GOOGLE_BIG_QUERY_BI_PROJECT_ID: '{{ .Values.config.GOOGLE_BIG_QUERY_BI_PROJECT_ID }}'
+  OPTIMOVE_ENABLED: '{{ .Values.config.OPTIMOVE_ENABLED }}'
+  OPTIMOVE_API_URL: '{{ .Values.config.OPTIMOVE_API_URL }}'
+  BONUS_BRANDS_IDS: '{{ .Values.config.BONUS_BRANDS_IDS }}'
+  BACKOFFICE_MADNIX_ID: '{{ .Values.config.BACKOFFICE_MADNIX_ID }}'
+  BACKOFFICE_WILDSULTAN_ID: '{{ .Values.config.BACKOFFICE_WILDSULTAN_ID }}'
+  BACKOFFICE_WINOUI_ID: '{{ .Values.config.BACKOFFICE_WINOUI_ID }}'
+  BACKOFFICE_IBIZAPALACE_ID: '{{ .Values.config.BACKOFFICE_IBIZAPALACE_ID }}'
+  BACKOFFICE_YOKIKANA_ID: '{{ .Values.config.BACKOFFICE_YOKIKANA_ID }}'
+  DD_SAMPLE_RATE: '{{ .Values.config.DD_SAMPLE_RATE }}'
+  DD_SERVICE: '{{ .Values.config.DD_SERVICE }}'
+  EDP_HOST: '{{ .Values.config.EDP_HOST }}'
+  SEGMENTATION_TABLE: '{{ .Values.config.SEGMENTATION_TABLE }}'
+  CAPTAIN_URL: '{{ .Values.config.CAPTAIN_URL }}'
+  MYAFF_BQ_DATASET: '{{ .Values.config.MYAFF_BQ_DATASET }}'
+  MYAFF_DB_HOST: '{{ .Values.config.MYAFF_DB_HOST }}'
+  MYAFF_DB_PORT: '{{ .Values.config.MYAFF_DB_PORT }}'
+  MYAFF_DB_NAME: '{{ .Values.config.MYAFF_DB_NAME }}'
+  MYAFF_GOOGLE_CLOUD_PROJECT: '{{ .Values.config.MYAFF_GOOGLE_CLOUD_PROJECT }}'
+  MYAFF_GOOGLE_CLOUD_BUCKET: '{{ .Values.config.MYAFF_GOOGLE_CLOUD_BUCKET }}'
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: api-php-config
+data:
+  php-ini-settings: |
+{{ .Values.phpIniSettings | indent 4 }}

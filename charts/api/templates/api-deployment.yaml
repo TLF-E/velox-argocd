@@ -18,3 +18,15 @@ spec:
           name: nginx
         - image: {{ .Values.phpImageTag }}
           name: php-fpm
+
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: velox-api
+  namespace: {{ .Values.namespace }}
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      service: velox-api
