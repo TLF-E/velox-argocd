@@ -9,15 +9,15 @@ metadata:
     alb.ingress.kubernetes.io/ssl-redirect: '443'
     alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=61,routing.http.xff_header_processing.mode=preserve
     alb.ingress.kubernetes.io/target-group-attributes: deregistration_delay.timeout_seconds=60
-    alb.ingress.kubernetes.io/healthcheck-path: {{ .Values.healthcheckPath }}
+    alb.ingress.kubernetes.io/healthcheck-path: {{ .Values.ingress.healthcheckPath }}
     alb.ingress.kubernetes.io/healthy-threshold-count: '3'
-    alb.ingress.kubernetes.io/tags: project={{ .Values.namespace }},Name={{ .Values.projectName }}-alb,Namespace={{ .Values.namespace }},Stage={{ .Values.ddStage }}
+    alb.ingress.kubernetes.io/tags: project={{ .Values.namespace }},Name={{ .Values.ingress.loadBalancerName }},Namespace={{ .Values.namespace }},Stage={{ .Values.ddStage }}
     alb.ingress.kubernetes.io/group.name: {{ .Values.projectName }}
     alb.ingress.kubernetes.io/manage-backend-security-group-rules: 'true'
-    alb.ingress.kubernetes.io/certificate-arn: {{ .Values.certificateArn }}
-    alb.ingress.kubernetes.io/load-balancer-name: {{ .Values.loadBalancerName }}
-    alb.ingress.kubernetes.io/security-groups: {{ .Values.securityGroups }}
-    alb.ingress.kubernetes.io/subnets: {{ .Values.subnets }}
+    alb.ingress.kubernetes.io/certificate-arn: {{ .Values.ingress.certificateArn }}
+    alb.ingress.kubernetes.io/load-balancer-name: {{ .Values.ingress.loadBalancerName }}
+    alb.ingress.kubernetes.io/security-groups: {{ .Values.ingress.securityGroups }}
+    alb.ingress.kubernetes.io/subnets: {{ .Values.ingress.subnets }}
 
 kubernetes.io/ingress.class: "alb"
 spec:

@@ -1,0 +1,39 @@
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: velox-api
+  namespace: {{ .Values.namespace }}
+  labels:
+    service: velox-api
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: velox-api
+  minReplicas: {{ .Values.autoscaler.minReplicas }}
+  maxReplicas: {{ .Values.autoscaler.maxReplicas }}
+  metrics:
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaler.memoryUtilization }}
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaler.cpuUtilization }}
+  behavior:
+    scaleUp:
+      policies:
+        - type: Pods
+          value: 1
+          periodSeconds: {{ .Values.autoscaler.scaleUpPeriodSeconds }}
+    scaleDown:
+      policies:
+        - type: Pods
+          value: 1
+          periodSeconds: {{ .Values.autoscaler.scaleDownPeriodSeconds }}

@@ -14,9 +14,9 @@ spec:
         service: velox-api
     spec:
       containers:
-        - image: {{ .Values.nginxImageTag }}
+        - image: {{ .Values.api.nginxImageTag }}
           name: nginx
-        - image: {{ .Values.phpImageTag }}
+        - image: {{ .Values.api.phpImageTag }}
           name: php-fpm
 
 ---

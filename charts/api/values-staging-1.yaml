@@ -1,0 +1,40 @@
+# apiHost: velox-api.tlf.dev
+
+# ddStage: prod
+# projectName: velox-prod-1
+# loadBalancerName: velox-prod-1-alb
+
+# phpImageTag: 156041417813.dkr.ecr.eu-west-1.amazonaws.com/velox-api:latest
+# nginxImageTag: nginx:latest
+# healthcheckPath: /api/doc
+
+# certificateArn: arn:aws:acm:eu-west-1:156041417813:certificate/a6e631a1-3073-4ebb-91d0-b973602876a1
+# securityGroups: "sg-0818251ac039f7f53" # name: allow_cloudfront_origin_facing_sg. CLI: cd 06.EKS; ../terra.sh velox-prod-1 output | grep allow_cloudfront_origin_facing_sg
+# subnets: "subnet-0890ba5ed274de236,subnet-00f22ef5ccfd014a7,subnet-0687c9f0c4109a58f" # name: velox-prod-1-public-subnets. CLI: cd 02.VPC; t output -json | jq '.public_subnet_ids.value'    
+
+config:
+  OPCACHE_ENABLED: '1'
+  APP_ENV: 'dev'
+  # CACHE_URL: 'redis://velox-staging-1-redis.staging-1.lancaster-solutions.com'
+  INFOBIP_HOST: 'https://exww2.api.infobip.com'
+  INFOBIP_PREFIX: 'App'
+  BACKOFFICE_HOST: 'https://backend-api.staging-1.octopostaging.com'
+  BACKOFFICE_CLIENT_ID: '4f6003b2ed7a836e6aad2c97615d9b9f'
+  BACKOFFICE_USER: 'brand-celesta-api-service-account@tlf.com'
+  # FRONTEND_URL: 'https://velox-front.staging-1.lancaster-solutions.com/'
+  # # BACKEND_URL: 'https://velox-api.staging-1.lancaster-solutions.com/api/'
+  BLACKFIRE_SERVER_ID: d4344b78-4e5b-48bd-82e0-29646d0bb9fb
+  BLACKFIRE_CLIENT_ID: 760417ea-2fe6-4f9c-bac7-1de83c146784
+  OPTIMOVE_ENABLED: '1'
+  OPTIMOVE_API_URL: 'https://sandbox-api.optimove.net/'
+  BONUS_BRANDS_IDS: '56,128,117,142,143'
+  BACKOFFICE_MADNIX_ID: '56'
+  BACKOFFICE_WILDSULTAN_ID: '128'
+  BACKOFFICE_WINOUI_ID: '117'
+  BACKOFFICE_IBIZAPALACE_ID: '142'
+  BACKOFFICE_YOKIKANA_ID: '143'
+  EDP_HOST: 'https://api-gw.delivery.email-dp.com'
+  SEGMENTATION_TABLE: 'player_value_segmentation_test'
+  CAPTAIN_URL: 'https://captainup.com'
+phpSettingsIni: |
+  opcache.enable=0
