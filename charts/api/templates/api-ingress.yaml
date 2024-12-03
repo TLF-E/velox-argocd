@@ -30,6 +30,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: api-active
+            name: velox-api
             port:
               number: 80
