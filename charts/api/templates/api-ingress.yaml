@@ -18,6 +18,9 @@ metadata:
     alb.ingress.kubernetes.io/load-balancer-name: {{ .Values.projectName }}-alb
     alb.ingress.kubernetes.io/security-groups: {{ .Values.securityGroups }}
     alb.ingress.kubernetes.io/subnets: {{ .Values.subnets }}
+    alb.ingress.kubernetes.io/target-type: "ip" # or "instance"
+    alb.ingress.kubernetes.io/backend-protocol: "HTTP" # or "HTTPS"
+kubernetes.io/ingress.class: "alb"
 spec:
   rules:
     - host: "{{ .Values.apiHost }}"
