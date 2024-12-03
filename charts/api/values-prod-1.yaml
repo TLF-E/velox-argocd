@@ -11,3 +11,38 @@ healthcheckPath: /api/doc
 certificateArn: arn:aws:acm:eu-west-1:156041417813:certificate/a6e631a1-3073-4ebb-91d0-b973602876a1
 securityGroups: "sg-0818251ac039f7f53" # name: allow_cloudfront_origin_facing_sg. CLI: cd 06.EKS; ../terra.sh velox-prod-1 output | grep allow_cloudfront_origin_facing_sg
 subnets: "subnet-0890ba5ed274de236,subnet-00f22ef5ccfd014a7,subnet-0687c9f0c4109a58f" # name: velox-prod-1-public-subnets. CLI: cd 02.VPC; t output -json | jq '.public_subnet_ids.value'    
+
+config:
+  APP_ENV: 'prod'
+  # CACHE_URL: 'redis://velox-prod-redis.prod.tlfe.dev'
+  INFOBIP_HOST: 'https://jd4x6n.api.infobip.com'
+  INFOBIP_PREFIX: 'App'
+  BACKOFFICE_HOST: 'https://backend-api.celesta.io'
+  BACKOFFICE_COMPANY_ID: '7'
+  BACKOFFICE_CLIENT_ID: 'dd8fe5b8ee24615e60f19ca12a300992'
+  BACKOFFICE_USER: 'velox@theluckfactory.net'
+  FRONTEND_URL: 'https://velox.tlf.dev/'
+  BACKEND_URL: 'https://velox-api.tlf.dev/api/'
+  GOOGLE_BIG_QUERY_PROJECT_ID: 'celesta-325419'
+  GOOGLE_BIG_QUERY_BI_PROJECT_ID: 'bi-platform-323915'
+  OPTIMOVE_ENABLED: '1'
+  OPTIMOVE_API_URL: 'https://api5.optimove.net/'
+  BONUS_BRANDS_IDS: '26,33,30,52,54'
+  BACKOFFICE_MADNIX_ID: '26'
+  BACKOFFICE_WILDSULTAN_ID: '33'
+  BACKOFFICE_WINOUI_ID: '30'
+  BACKOFFICE_IBIZAPALACE_ID: '52'
+  BACKOFFICE_YOKIKANA_ID: '54'
+  DD_SAMPLE_RATE: '1'
+  DD_SERVICE: 'velox-api'
+  EDP_HOST: 'https://api-gw.delivery.email-dp.com'
+  SEGMENTATION_TABLE: 'player_value_segmentation'
+  CAPTAIN_URL: 'https://captainup.com'
+  MYAFF_BQ_DATASET: 'myaff'
+  MYAFF_DB_HOST: 'mysql1.myaffiliates.com'
+  MYAFF_DB_PORT: '3395'
+  MYAFF_DB_NAME: 'sultanaffiliates'
+  MYAFF_GOOGLE_CLOUD_PROJECT: 'tlf-bi-project'
+  MYAFF_GOOGLE_CLOUD_BUCKET: 'myaff'
+phpIniSettings: |
+  opcache.enable=1
