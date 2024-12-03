@@ -7,17 +7,90 @@ spec:
   selector:
     matchLabels:
       service: velox-api
-  replicas: 1
+  replicas: {{ .Values.api.replicas }}
+  revisionHistoryLimit: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   template:
     metadata:
       labels:
         service: velox-api
     spec:
+      hostAliases:
+        - ip: "127.0.0.1"
+          hostnames:
+            - "php-fpm"
       containers:
         - image: {{ .Values.api.nginxImageTag }}
           name: nginx
+          ports:
+            - containerPort: 80
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: 64Mi
+              cpu: 64m
+            limits:
+              memory: 128Mi
+              cpu: 128m
         - image: {{ .Values.api.phpImageTag }}
           name: php-fpm
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: api-config
+            - secretRef:
+                name: api-secrets
+          resources:
+            requests:
+              memory: {{ .Values.api.phpFpmResources.requests.memory }}
+              cpu: {{ .Values.api.phpFpmResources.requests.cpu }}
+            limits:
+              memory: {{ .Values.api.phpFpmResources.limits.memory }}
+              cpu: {{ .Values.api.phpFpmResources.limits.cpu }}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.namespace }}
+  name: velox-api-message-processor
+spec:
+  selector:
+    matchLabels:
+      service: velox-api-message-processor
+  replicas: {{ .Values.api.replicasMessageProcessor }}
+  revisionHistoryLimit: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        service: velox-api-message-processor
+    spec:
+      containers:
+        - image: {{ .Values.api.phpImageTag }}
+          name: php-fpm
+          imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: api-config
+            - secretRef:
+                name: api-secrets
+          resources:
+            requests:
+              memory: {{ .Values.api.phpFpmResources.requests.memory }}
+              cpu: {{ .Values.api.phpFpmResources.requests.cpu }}
+            limits:
+              memory: {{ .Values.api.phpFpmResources.limits.memory }}
+              cpu: {{ .Values.api.phpFpmResources.limits.cpu }}
+
 
 ---
 apiVersion: policy/v1
