@@ -18,6 +18,8 @@ metadata:
     alb.ingress.kubernetes.io/load-balancer-name: {{ .Values.loadBalancerName }}
     alb.ingress.kubernetes.io/security-groups: {{ .Values.securityGroups }}
     alb.ingress.kubernetes.io/subnets: {{ .Values.subnets }}
+
+kubernetes.io/ingress.class: "alb"
 spec:
   rules:
     - host: "{{ .Values.frontHost }}"
