@@ -5,8 +5,19 @@ metadata:
   namespace: {{ .Values.namespace }}
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=61,routing.http.xff_header_processing.mode=preserve
+    alb.ingress.kubernetes.io/target-group-attributes: deregistration_delay.timeout_seconds=60
+    alb.ingress.kubernetes.io/healthcheck-path: {{ .Values.healthcheckPath }}
+    alb.ingress.kubernetes.io/healthy-threshold-count: '2'
+    alb.ingress.kubernetes.io/tags: project={{ .Values.namespace }},Name={{ .Values.projectName }}-alb,Namespace={{ .Values.namespace }},Stage={{ .Values.stage }}
+    alb.ingress.kubernetes.io/group.name: {{ .Values.projectName }}
+    alb.ingress.kubernetes.io/manage-backend-security-group-rules: 'true'
     alb.ingress.kubernetes.io/certificate-arn: {{ .Values.certificateArn }}
-    alb.ingress.kubernetes.io/load-balancer-name: {{ .Values.loadBalancerName }}
+    alb.ingress.kubernetes.io/load-balancer-name: {{ .Values.projectName }}-alb
+    alb.ingress.kubernetes.io/security-groups: {{ .Values.securityGroups }}
+    alb.ingress.kubernetes.io/subnets: {{ .Values.subnets }}
 spec:
   rules:
     - host: "{{ .Values.apiHost }}"
