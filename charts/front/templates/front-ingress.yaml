@@ -27,6 +27,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: velox-front
+                name: front-active
                 port:
                   number: 80
