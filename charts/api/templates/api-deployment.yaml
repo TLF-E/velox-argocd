@@ -16,5 +16,5 @@ spec:
       containers:
         - image: {{ .Values.nginxImageTag }}
           name: nginx
-        - image: {{ .Values.phpImageTag }}
-          name: php-fpm
+        # - image: {{ .Values.phpImageTag }}
+        #   name: php-fpm
