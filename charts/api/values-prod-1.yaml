@@ -5,6 +5,7 @@ projectName: velox-prod-1
 loadBalancerName: velox-prod-1-alb
 
 phpImageTag: 156041417813.dkr.ecr.eu-west-1.amazonaws.com/velox-api:latest
+phpImageTagCronjobs: 156041417813.dkr.ecr.eu-west-1.amazonaws.com/velox-api:cronjobs
 nginxImageTag: nginx:latest
 healthcheckPath: /api/doc
 
@@ -46,3 +47,44 @@ config:
   MYAFF_GOOGLE_CLOUD_BUCKET: 'myaff'
 phpIniSettings: |
   opcache.enable=1
+
+cronjobs:
+  - name: velox-job-global-payment-alert-check
+    schedule: "*/5 * * * *"
+    command: ["./bin/console", "app:payment-alerts"]
+  - name: velox-job-edp-data-sync-to-bq-madnix
+    schedule: "30 22 * * *"
+    command: ["./bin/console", "app:edp:campaign-bq-export", "--brandName=Madnix"]
+  - name: velox-job-edp-data-sync-to-bq-winoui
+    schedule: "30 0 * * *"
+    command: ["./bin/console", "app:edp:campaign-bq-export", "--brandName=Winoui"]
+  - name: velox-job-edp-data-sync-to-bq-wildsultan
+    schedule: "30 2 * * *"
+    command: ["./bin/console", "app:edp:campaign-bq-export", "--brandName=Wildsultan"]
+  - name: velox-job-segment-bonus-sanitizer
+    schedule: "30 00 * * *"
+    command: ["./bin/console", "app:segment:bonus:sanitizer"]
+  - name: velox-job-bonus-enable
+    schedule: "*/10 * * * *"
+    command: ["./bin/console", "app:bonus-enable"]
+  - name: velox-job-metrics-update
+    schedule: "30 01 * * *"
+    command: ["./bin/console", "app:metrics-update"]
+  - name: velox-job-edp-cleanup
+    schedule: "30 03 * * *"
+    command: ["./bin/console", "app:edp:campaign-cleanup"]
+  - name: velox-promo-cleanup
+    schedule: "10 0 * * *"
+    command: ["./bin/console", "app:promo:cleanup"]
+  - name: velox-job-player-tier-update-ws
+    schedule: "20 0 * * *"
+    command: ["./bin/console", "app:player-tier-update", "33"]
+  - name: velox-job-player-tier-update-ip
+    schedule: "40 0 * * *"
+    command: ["./bin/console", "app:player-tier-update", "52"]
+  - name: velox-job-player-tier-update-wo
+    schedule: "10 1 * * *"
+    command: ["./bin/console", "app:player-tier-update", "30"]
+  - name: velox-assign-bonuses-mx
+    schedule: "0 1 * * *"
+    command: ["./bin/console", "app:assign_bonuses", "26"]
