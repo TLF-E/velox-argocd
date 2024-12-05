@@ -12,7 +12,7 @@ api:
   phpImageTag: 156041417813.dkr.ecr.eu-west-1.amazonaws.com/velox-api:latest
   nginxImageTag: nginx:latest
   ddStage: prod
-  replicas: 4
+  replicas: 6
   replicasMessageProcessor: 2
   phpFpmResources:
     requests:
@@ -32,7 +32,7 @@ autoscaler:
 
 config:
   APP_ENV: 'prod'
-  # CACHE_URL: 'redis://velox-prod-redis.prod.tlfe.dev'
+  CACHE_URL: 'rediss://velox-prod-1-001.velox-prod-1.vpqcar.euw1.cache.amazonaws.com'
   INFOBIP_HOST: 'https://jd4x6n.api.infobip.com'
   INFOBIP_PREFIX: 'App'
   BACKOFFICE_HOST: 'https://backend-api.celesta.io'
@@ -64,6 +64,55 @@ config:
   MYAFF_GOOGLE_CLOUD_BUCKET: 'myaff'
 phpIniSettings: |
   opcache.enable=1
+
+ssmParameters:
+  DATABASE_URL: "/velox/database_url"
+  JWT_PASSPHRASE: "/velox/jwt_passphrase"
+  MAILER_DSN: "/velox/mailer_dsn"
+  MESSENGER_TRANSPORT_DSN: "/velox/messenger_transport_dsn"
+  BACKOFFICE_CLIENT_SECRET: "/velox/backoffice_client_secret"
+  BACKOFFICE_PASSWORD: "/velox/backoffice_password"
+  GOOGLE_APPLICATION_CREDENTIALS: "/velox/google_application_credentials"
+  GOOGLE_BI_APPLICATION_CREDENTIALS: "/velox/google_bi_application_credentials"
+  INFOBIP_KEY: "/velox/infobip_key"
+  EDP_CLIENT_SECRET: "/velox/edp_client_secret"
+  EDP_CLIENT_ID: "/velox/edp_client_id"
+  EDP_MADNIX_ID: "/velox/edp_madnix_id"
+  EDP_MADNIX_SECRET: "/velox/edp_madnix_secret"
+  EDP_WINOUI_ID: "/velox/edp_winoui_id"
+  EDP_WINOUI_SECRET: "/velox/edp_winoui_secret"
+  EDP_WILDSULTAN_ID: "/velox/edp_wildsultan_id"
+  EDP_WILDSULTAN_SECRET: "/velox/edp_wildsultan_secret"
+  AWS_KEY: "/velox/aws_key"
+  AWS_SECRET: "/velox/aws_secret"
+  PAYMENT_ALERT_DB_DSN: "/velox/payment_alert_db_dsn"
+  PAYMENT_ALERT_WEBHOOK: "/velox/payment_alert_webhook"
+  SLACK_WEBHOOK: "/velox/slack_webhook"
+  BLACKFIRE_SERVER_ID: "/velox/blackfire_server_id"
+  BLACKFIRE_CLIENT_ID: "/velox/blackfire_client_id"
+  OPTIMOVE_API_KEY: "/velox/optimove_api_key"
+  CAPTAIN_UP_SECRET_MADNIX: "/velox/captain_up_secret_madnix"
+  CAPTAIN_UP_API_KEY_MADNIX: "/velox/captain_up_api_key_madnix"
+  CAPTAIN_UP_SECRET_IBIZAPALACE: "/velox/captain_up_secret_ibizapalace"
+  CAPTAIN_UP_API_KEY_IBIZAPALACE: "/velox/captain_up_api_key_ibizapalace"
+  CAPTAIN_UP_SECRET_YOKIKANA: "/velox/captain_up_secret_yokikana"
+  CAPTAIN_UP_API_KEY_YOKIKANA: "/velox/captain_up_api_key_yokikana"
+  AWS_REGION: "/velox/aws_region"
+  AWS_ACCESS_KEY_ID: "/velox/aws_access_key_id"
+  AWS_SECRET_ACCESS_KEY: "/velox/aws_secret_access_key"
+  AWS_BUCKET_MADNIX: "/velox/aws_bucket_madnix"
+  AWS_BUCKET_WILDSULTAN: "/velox/aws_bucket_wildsultan"
+  AWS_BUCKET_WINOUI: "/velox/aws_bucket_winoui"
+  AWS_BUCKET_IBIZAPALACE: "/velox/aws_bucket_ibizapalace"
+  AWS_BUCKET_YOKIKANA: "/velox/aws_bucket_yokikana"
+  MYAFF_DB_USER: "/velox/myaff_db_user"
+  MYAFF_DB_PASSWORD: "/velox/myaff_db_password"
+  MYAFF_GOOGLE_CLOUD_CREDENTIALS: "/velox/myaff_google_cloud_credentials"
+  MYAFF_DB_SSL_CA: "/velox/myaff_db_ssl_ca"
+
+ssmParametersJwtKeys:
+  publicKey: "/velox/public_key"
+  privateKey: "/velox/private_key"
 
 cronjobs:
   - name: velox-job-global-payment-alert-check
