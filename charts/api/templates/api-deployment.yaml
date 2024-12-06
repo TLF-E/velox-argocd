@@ -39,6 +39,29 @@ spec:
         - image: {{ .Values.api.phpImageTag }}
           name: php-fpm
           imagePullPolicy: IfNotPresent
+          env:
+          - name: DD_TAGS
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.annotations['tags']
+          - name: DD_ENV
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.annotations['env']
+          - name: DD_SERVICE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.annotations['service']
+          - name: DD_VERSION
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.annotations['version']
+          - name: DD_TRACE_SAMPLING_RULES
+            value: '[{"service": "velox-message-processor", "sample_rate": 0.1}]'
+          - name: DD_AGENT_HOST
+            valueFrom:
+              fieldRef:
+                fieldPath: status.hostIP
           envFrom:
             - configMapRef:
                 name: api-config
@@ -78,6 +101,29 @@ spec:
         - image: {{ .Values.api.phpImageTag }}
           name: php-fpm
           imagePullPolicy: IfNotPresent
+          env:
+          - name: DD_TAGS
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.annotations['tags']
+          - name: DD_ENV
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.annotations['env']
+          - name: DD_SERVICE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.annotations['service']
+          - name: DD_VERSION
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.annotations['version']
+          - name: DD_TRACE_SAMPLING_RULES
+            value: '[{"service": "velox-message-processor", "sample_rate": 0.1}]'
+          - name: DD_AGENT_HOST
+            valueFrom:
+              fieldRef:
+                fieldPath: status.hostIP
           envFrom:
             - configMapRef:
                 name: api-config
