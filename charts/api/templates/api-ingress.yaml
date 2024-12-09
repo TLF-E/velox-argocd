@@ -19,7 +19,7 @@ metadata:
     alb.ingress.kubernetes.io/security-groups: {{ .Values.ingress.securityGroups }}
     alb.ingress.kubernetes.io/subnets: {{ .Values.ingress.subnets }}
 
-kubernetes.io/ingress.class: "alb"
+
 spec:
   ingressClassName: alb
   rules:
@@ -32,4 +32,4 @@ spec:
           service:
             name: velox-api
             port:
-              number: 80
+              name: http
