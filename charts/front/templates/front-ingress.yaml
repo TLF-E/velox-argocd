@@ -12,7 +12,7 @@ metadata:
     alb.ingress.kubernetes.io/healthcheck-path: {{ .Values.healthcheckPath }}
     alb.ingress.kubernetes.io/healthy-threshold-count: '3'
     alb.ingress.kubernetes.io/tags: project={{ .Values.namespace }},Name={{ .Values.projectName }}-alb,Namespace={{ .Values.namespace }},Stage={{ .Values.ddStage }}
-    alb.ingress.kubernetes.io/group.name: {{ .Values.projectName }}
+    alb.ingress.kubernetes.io/group.name: "{{ .Values.projectName }}-groupname"
     alb.ingress.kubernetes.io/manage-backend-security-group-rules: 'true'
     alb.ingress.kubernetes.io/certificate-arn: {{ .Values.certificateArn }}
     alb.ingress.kubernetes.io/load-balancer-name: "{{ .Values.loadBalancerName }}-test"
