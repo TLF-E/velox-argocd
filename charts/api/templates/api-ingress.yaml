@@ -31,5 +31,5 @@ spec:
         backend:
           service:
             name: velox-api
-            port:
-              name: http
+            port: 
+              number: 80
