@@ -222,7 +222,7 @@ metadata:
     alb.ingress.kubernetes.io/target-group-attributes: deregistration_delay.timeout_seconds=60
     alb.ingress.kubernetes.io/healthcheck-path: /api/doc
     alb.ingress.kubernetes.io/healthy-threshold-count: '3'
-    alb.ingress.kubernetes.io/tags: project=velox,Name=velox-prod-1-alb,Namespace=velox,Stage=
+    alb.ingress.kubernetes.io/tags: project=velox,Name=velox-prod-1-alb,Namespace=velox,Stage={{ .Values.ddStage }}
     alb.ingress.kubernetes.io/group.name: velox-prod-1
     alb.ingress.kubernetes.io/manage-backend-security-group-rules: 'true'
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-1:156041417813:certificate/a6e631a1-3073-4ebb-91d0-b973602876a1
