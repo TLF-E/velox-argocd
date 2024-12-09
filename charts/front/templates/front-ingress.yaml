@@ -31,4 +31,4 @@ spec:
               service:
                 name: velox-front
                 port:
-                  number: 80
+                  number: 3000
