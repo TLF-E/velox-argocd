@@ -1,28 +1,28 @@
-{{- range .Values.cronjobs }}
----
-apiVersion: batch/v1
-kind: CronJob
-metadata:
-  name: {{ .name }}
-  namespace: {{ $.Values.namespace }}
-spec:
-  schedule: "{{ .schedule }}"
-  concurrencyPolicy: Forbid
-  successfulJobsHistoryLimit: 7
-  failedJobsHistoryLimit: 7
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          containers:
-            - name: {{ .name }}
-              image: {{ $.Values.api.phpImageTag }}
-              imagePullPolicy: Always
-              command: {{ .command | toJson }}
-              envFrom:
-                - configMapRef:
-                    name: api-config
-                - secretRef:
-                    name: api-secrets
-          restartPolicy: OnFailure
-{{- end }}
+# {{- range .Values.cronjobs }}
+# ---
+# apiVersion: batch/v1
+# kind: CronJob
+# metadata:
+#   name: {{ .name }}
+#   namespace: {{ $.Values.namespace }}
+# spec:
+#   schedule: "{{ .schedule }}"
+#   concurrencyPolicy: Forbid
+#   successfulJobsHistoryLimit: 7
+#   failedJobsHistoryLimit: 7
+#   jobTemplate:
+#     spec:
+#       template:
+#         spec:
+#           containers:
+#             - name: {{ .name }}
+#               image: {{ $.Values.api.phpImageTag }}
+#               imagePullPolicy: Always
+#               command: {{ .command | toJson }}
+#               envFrom:
+#                 - configMapRef:
+#                     name: api-config
+#                 - secretRef:
+#                     name: api-secrets
+#           restartPolicy: OnFailure
+# {{- end }}
