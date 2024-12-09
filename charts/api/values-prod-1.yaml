@@ -11,7 +11,7 @@ ingress:
   subnets: "subnet-0890ba5ed274de236,subnet-00f22ef5ccfd014a7,subnet-0687c9f0c4109a58f" # name: velox-prod-1-public-subnets. CLI: cd 02.VPC; t output -json | jq '.public_subnet_ids.value'    
 
 api:
-  phpImageTag: 156041417813.dkr.ecr.eu-west-1.amazonaws.com/velox-prod-1-api:v1.0.aebef35
+  phpImageTag: 156041417813.dkr.ecr.eu-west-1.amazonaws.com/velox-prod-1-api:v1.0.build-5.4971b3a
   nginxImageTag: nginx:latest
   ddStage: prod
   replicas: 1
