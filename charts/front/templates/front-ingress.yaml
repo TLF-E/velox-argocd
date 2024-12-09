@@ -12,15 +12,15 @@ metadata:
     alb.ingress.kubernetes.io/healthcheck-path: {{ .Values.healthcheckPath }}
     alb.ingress.kubernetes.io/healthy-threshold-count: '3'
     alb.ingress.kubernetes.io/tags: project={{ .Values.namespace }},Name={{ .Values.projectName }}-alb,Namespace={{ .Values.namespace }},Stage={{ .Values.ddStage }}
-    alb.ingress.kubernetes.io/group.name: "{{ .Values.projectName }}-groupname"
     alb.ingress.kubernetes.io/manage-backend-security-group-rules: 'true'
     alb.ingress.kubernetes.io/certificate-arn: {{ .Values.certificateArn }}
-    alb.ingress.kubernetes.io/load-balancer-name: "{{ .Values.loadBalancerName }}-test"
     alb.ingress.kubernetes.io/security-groups: {{ .Values.securityGroups }}
     alb.ingress.kubernetes.io/subnets: {{ .Values.subnets }}
+    alb.ingress.kubernetes.io/load-balancer-name: {{ .Values.loadBalancerName }}
+    alb.ingress.kubernetes.io/group.name: {{ .Values.projectName }}
 
-kubernetes.io/ingress.class: "alb"
 spec:
+  ingressClassName: alb
   rules:
     - host: "{{ .Values.frontHost }}"
       http:

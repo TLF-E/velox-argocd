@@ -15,9 +15,9 @@ metadata:
     alb.ingress.kubernetes.io/group.name: {{ .Values.projectName }}
     alb.ingress.kubernetes.io/manage-backend-security-group-rules: 'true'
     alb.ingress.kubernetes.io/certificate-arn: {{ .Values.ingress.certificateArn }}
+    alb.ingress.kubernetes.io/subnets: {{ .Values.ingress.subnets }}
     alb.ingress.kubernetes.io/load-balancer-name: {{ .Values.ingress.loadBalancerName }}
     alb.ingress.kubernetes.io/security-groups: {{ .Values.ingress.securityGroups }}
-    alb.ingress.kubernetes.io/subnets: {{ .Values.ingress.subnets }}
 
 
 spec:
