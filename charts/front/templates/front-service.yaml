@@ -4,6 +4,7 @@ metadata:
   namespace: {{ .Values.namespace }}
   name: velox-front
 spec:
+  type: NodePort
   selector:
     service: velox-front
   ports:
