@@ -2,7 +2,7 @@ frontHost: "velox.tlf.dev"
 ddStage: prod
 projectName: velox-prod-1
 loadBalancerName: velox-prod-1-alb
-nodejsImageTag: 156041417813.dkr.ecr.eu-west-1.amazonaws.com/velox-prod-1-front:v1.0.f4386b2 
+nodejsImageTag: 156041417813.dkr.ecr.eu-west-1.amazonaws.com/velox-prod-1-front:v1.0.a6f14ee 
 
 certificateArn: arn:aws:acm:eu-west-1:156041417813:certificate/a6e631a1-3073-4ebb-91d0-b973602876a1
 securityGroups: "sg-0818251ac039f7f53" #allow_cloudfront_origin_facing_sg
