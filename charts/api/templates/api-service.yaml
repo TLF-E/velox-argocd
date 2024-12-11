@@ -4,10 +4,10 @@ metadata:
   namespace: {{ .Values.namespace }}
   name: velox-api
 spec:
-  type: NodePort
   selector:
     service: velox-api
   ports:
-    - protocol: TCP
-      port: 80
+    - port: 80
       targetPort: 80
+      protocol: TCP
+  type: NodePort
