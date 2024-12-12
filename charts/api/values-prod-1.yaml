@@ -1,5 +1,7 @@
+namespace: velox
 apiHost: velox-api.tlf.dev
 projectName: velox-prod-1
+stage: prod-1
 aws:
   region: eu-west-1
 
@@ -14,7 +16,6 @@ api:
   phpImageTag: 156041417813.dkr.ecr.eu-west-1.amazonaws.com/velox-prod-1-api:v1.0.build-3.7fcb3f7
   nginxImageTag: 156041417813.dkr.ecr.eu-west-1.amazonaws.com/velox-prod-1-api:v1.0.build-3.7fcb3f7
 
-  ddStage: prod
   replicas: 1
   replicasMessageProcessor: 1
   phpFpmResources:

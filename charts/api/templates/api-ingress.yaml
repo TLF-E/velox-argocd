@@ -11,7 +11,11 @@ metadata:
     alb.ingress.kubernetes.io/target-group-attributes: deregistration_delay.timeout_seconds=60
     alb.ingress.kubernetes.io/healthcheck-path: {{ .Values.ingress.healthcheckPath }}
     alb.ingress.kubernetes.io/healthy-threshold-count: '3'
-    alb.ingress.kubernetes.io/tags: project={{ .Values.namespace }},Name={{ .Values.ingress.loadBalancerName }},Namespace={{ .Values.namespace }},Stage={{ .Values.ddStage }}
+    alb.ingress.kubernetes.io/tags: |-
+      project={{ .Values.namespace }},
+      Name={{ .Values.ingress.loadBalancerName }},
+      Namespace={{ .Values.namespace }},
+      Stage={{ .Values.stage }}
     alb.ingress.kubernetes.io/group.name: {{ .Values.projectName }}
     alb.ingress.kubernetes.io/manage-backend-security-group-rules: 'true'
     alb.ingress.kubernetes.io/certificate-arn: {{ .Values.ingress.certificateArn }}
