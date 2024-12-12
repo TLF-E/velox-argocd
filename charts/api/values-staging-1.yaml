@@ -1,6 +1,6 @@
 # apiHost: velox-api.tlf.dev
 
-# ddStage: prod
+
 # projectName: velox-prod-1
 # loadBalancerName: velox-prod-1-alb
 

@@ -1,6 +1,6 @@
 frontHost: "velox.tlf.dev"
-stage: prod-1
 projectName: velox-prod-1
+stage: prod-1
 loadBalancerName: velox-prod-1-alb
 nodejsImageTag: 156041417813.dkr.ecr.eu-west-1.amazonaws.com/velox-prod-1-front:v1.0.a6f14ee 
 
