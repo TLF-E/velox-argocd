@@ -1,3 +1,4 @@
+namespace: velox
 apiHost: velox-api.tlf.dev
 projectName: velox-prod-1
 stage: prod-1

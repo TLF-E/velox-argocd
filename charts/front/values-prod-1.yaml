@@ -1,3 +1,4 @@
+namespace: velox
 frontHost: "velox.tlf.dev"
 projectName: velox-prod-1
 stage: prod-1
