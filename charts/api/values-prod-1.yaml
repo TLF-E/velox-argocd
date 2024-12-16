@@ -1,5 +1,5 @@
 namespace: velox
-apiHost: velox-api.tlf.dev
+apiHost: api.velox.sh
 projectName: velox-prod-1
 stage: prod-1
 aws:
@@ -43,8 +43,8 @@ config:
   BACKOFFICE_COMPANY_ID: '7'
   BACKOFFICE_CLIENT_ID: 'dd8fe5b8ee24615e60f19ca12a300992'
   BACKOFFICE_USER: 'velox@theluckfactory.net'
-  FRONTEND_URL: 'https://velox.tlf.dev/'
-  BACKEND_URL: 'https://velox-api.tlf.dev/api/'
+  FRONTEND_URL: 'https://velox.sh/'
+  BACKEND_URL: 'https://api.velox.sh/api/'
   GOOGLE_BIG_QUERY_PROJECT_ID: 'celesta-325419'
   GOOGLE_BIG_QUERY_BI_PROJECT_ID: 'bi-platform-323915'
   OPTIMOVE_ENABLED: '1'

@@ -1,5 +1,5 @@
 namespace: velox
-frontHost: "velox.tlf.dev"
+frontHost: "velox.sh"
 projectName: velox-prod-1
 stage: prod-1
 loadBalancerName: velox-prod-1-alb
