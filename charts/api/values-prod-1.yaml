@@ -158,3 +158,6 @@ cronjobs:
   - name: velox-assign-bonuses-mx
     schedule: "0 1 * * *"
     command: ["./bin/console", "app:assign_bonuses", "26"]
+  - name: velox-job-sync-myaff-bq
+    schedule: "8 6 * * *"
+    command: ["./bin/console", "myaff:sync-database"]
