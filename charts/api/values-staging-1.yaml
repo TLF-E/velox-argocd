@@ -8,7 +8,7 @@
 # nginxImageTag: nginx:latest
 # healthcheckPath: /api/doc
 
-# certificateArn: arn:aws:acm:eu-west-1:156041417813:certificate/a6e631a1-3073-4ebb-91d0-b973602876a1
+# certificateArn: arn:aws:acm:eu-west-1:156041417813:certificate/90c353ee-c023-4b3b-85f3-d32ed580a3b5
 # securityGroups: "sg-0818251ac039f7f53" # name: allow_cloudfront_origin_facing_sg. CLI: cd 06.EKS; ../terra.sh velox-prod-1 output | grep allow_cloudfront_origin_facing_sg
 # subnets: "subnet-0890ba5ed274de236,subnet-00f22ef5ccfd014a7,subnet-0687c9f0c4109a58f" # name: velox-prod-1-public-subnets. CLI: cd 02.VPC; t output -json | jq '.public_subnet_ids.value'    
 
